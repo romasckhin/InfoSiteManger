@@ -30,6 +30,6 @@ switch($route) {
         require_once 'template/category.php';
         break;
     default:
-        echo "Это default";
+        require_once 'template/404.php';
 }
 
