@@ -11,7 +11,7 @@ $route = explodeUrl($route);
 
 
 // main - главная страница
-// cat - категории
+// category - категории
 // article - статьи 
 
 switch($route) {
@@ -23,6 +23,11 @@ switch($route) {
     case ($route[0] == 'article' AND isset($route[1])):
         $result = getArticle($route[1]);
         require_once 'template/article.php';
+        break;
+    case ($route[0] == 'category' AND isset($route[1])):
+        $category = getCategory($route[1]);
+        $result = getCategoryAtricle($category['id']);
+        require_once 'template/category.php';
         break;
     default:
         echo "Это default";
