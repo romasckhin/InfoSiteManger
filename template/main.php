@@ -7,6 +7,7 @@ foreach ($result as $item) {
     $out .= '<h4>' . $item['title'] . '</h4>';
     $out .= '<p>' . $item['descr_min'] . '</p>';
     $out .= '<img src=/static/images/' . $item['image'] . ' width=200 >'; 
+    $out .= '<div><a href=/article/' . $item['url'] . '> Читать полность</a></div>'; 
     $out .= '</div>';
 }
 
