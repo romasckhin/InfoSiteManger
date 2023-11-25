@@ -61,3 +61,40 @@ function updateUser($id, $hash, $ip) {
     }
     return execQuery($query);
 }
+
+
+function getUser() {
+    if (isset($_COOKIE['hash'])) {
+
+        $hash = intval($_COOKIE['hash']);
+        $query = "SELECT hash, INET_NTOA(ip) as ip FROM users WHERE hash = $hash";
+        $user = select($query);
+
+        if (count($user) == 0) {
+            return false;
+        }
+        else {
+            $user = $user[0];
+            if ($user['hash'] !== $_COOKIE['hash']) {
+                clearCookies();
+                return false;
+            }
+            if (!is_null($user['ip'])) {
+                if ($user['ip'] !== $_SERVER['REMOTE_ADDR']) {
+                    clearCookies();
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    else {
+        clearCookies();
+        return false;
+    }
+}
+
+function clearCookies() {
+    setcookie('hash', '', time()-60*60*24*30, '/');
+    unset($_GET['login']);
+}

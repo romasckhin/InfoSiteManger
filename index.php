@@ -34,7 +34,12 @@ switch($route) {
         break;  
     case ($route[0] == 'login'):
         require_once 'template/login.php';
-        break;      
+        break; 
+    case ($route[0] == 'admin'):
+        $query = 'SELECT * FROM info';
+        $result = select($query);
+        require_once 'template/admin.php';
+        break;          
     default:
         require_once 'template/404.php';
 }
