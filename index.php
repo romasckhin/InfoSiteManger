@@ -32,6 +32,9 @@ switch($route) {
     case ($route[0] == 'register'):
         require_once 'template/register.php';
         break;  
+    case ($route[0] == 'login'):
+        require_once 'template/login.php';
+        break;      
     default:
         require_once 'template/404.php';
 }
