@@ -29,6 +29,9 @@ switch($route) {
         $result = getCategoryAtricle($category['id']);
         require_once 'template/category.php';
         break;
+    case ($route[0] == 'register'):
+        require_once 'template/register.php';
+        break;  
     default:
         require_once 'template/404.php';
 }

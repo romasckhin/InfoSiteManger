@@ -18,3 +18,17 @@ function getCategoryAtricle($cid) {
     $query = "SELECT * FROM info WHERE cid = '" . $cid . "' ";
     return select($query);
 }
+
+function isLoginExit($login) {
+    $query = "SELECT id FROM users WHERE login = '". $login . "'";
+    return select($query);
+    if (count($result) === 0) return false;
+    return true;
+}
+
+function createUser($login, $password) {
+    $password = md5(md5(trim($password)));
+    $login = trim($login);
+    $query = "INSERT INTO users (login, password) VALUES ('$login', '$password')";
+    return execQuery($query);
+}
