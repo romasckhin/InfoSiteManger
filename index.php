@@ -55,6 +55,18 @@ switch($route) {
         }
         header('Location: /login');
         break;     
+    case (isset($route[0]) && $route[0] == 'admin' && isset($route[1]) && $route[1] == 'update' && isset($route[2])):
+        //Проверка если user имеет право удалять
+        if (getUser()) {
+            $query = "SELECT * FROM category";
+            $category = select($query);
+            $query = "SELECT * FROM info WHERE id = " . $route[2];
+            $result = select($query)[0];
+            require_once 'template/update.php';
+            exit();
+        }  
+        header('Location: /login');
+        break;     
     case ($route[0] == 'admin'):
         $query = 'SELECT * FROM info';
         $result = select($query);

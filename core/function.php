@@ -103,3 +103,8 @@ function creareAticle($title, $url, $descr_min, $description, $cid, $image) {
     $query = "INSERT INTO info (cid, title, url, descr_min, description, image) VALUES ('$cid', '$title', '$url', '$descr_min', '$description', '$image')";
     return execQuery($query);
 }
+
+function updateAticle($id, $title, $url, $descr_min, $description, $cid, $image) {
+    $query = "UPDATE info SET cid = '$cid', title = '$title', url = '$url', descr_min = '$descr_min', description = '$description', image = '$image' WHERE id = '$id'";
+    return execQuery($query);
+}
