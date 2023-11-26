@@ -108,3 +108,9 @@ function updateAticle($id, $title, $url, $descr_min, $description, $cid, $image)
     $query = "UPDATE info SET cid = '$cid', title = '$title', url = '$url', descr_min = '$descr_min', description = '$description', image = '$image' WHERE id = '$id'";
     return execQuery($query);
 }
+
+function logout() {
+    clearCookies();
+    header('Location: /');
+    exit();
+}

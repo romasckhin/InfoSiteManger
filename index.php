@@ -71,6 +71,9 @@ switch($route) {
         $query = 'SELECT * FROM info';
         $result = select($query);
         require_once 'template/admin.php';
+        break;
+     case ($route[0] == 'logout'):
+        require_once 'template/logout.php';
         break;          
     default:
         require_once 'template/404.php';

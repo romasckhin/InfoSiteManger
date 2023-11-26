@@ -20,6 +20,7 @@ foreach ($result as $item) {
 
 <h1>Admin Panel</h1>
 <div><a href="/admin/create">create</a></div>
+<div><a href="/logout">logout</a></div>
 <?php
 
 echo $out;
