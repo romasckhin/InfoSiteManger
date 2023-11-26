@@ -70,7 +70,7 @@ function getUser() {
         $query = "SELECT hash, INET_NTOA(ip) as ip FROM users WHERE hash = $hash";
         $user = select($query);
 
-        if (count($user) == 0) {
+        if (count($user) === 0) {
             return false;
         }
         else {
@@ -96,5 +96,10 @@ function getUser() {
 
 function clearCookies() {
     setcookie('hash', '', time()-60*60*24*30, '/');
-    unset($_GET['login']);
+    // unset($_GET['login']);
+}
+
+function creareAticle($title, $url, $descr_min, $description, $cid, $image) {
+    $query = "INSERT INTO info (cid, title, url, descr_min, description, image) VALUES ('$cid', '$title', '$url', '$descr_min', '$description', '$image')";
+    return execQuery($query);
 }

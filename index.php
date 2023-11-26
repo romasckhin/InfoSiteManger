@@ -45,6 +45,16 @@ switch($route) {
         }
         header('Location: /login');
         break;     
+    case (isset($route[0]) && $route[0] == 'admin' && isset($route[1]) && $route[1] == 'create'):
+        //Проверка если user имеет право удалять
+        if (getUser()) {
+            $query = "SELECT * FROM category";
+            $category = select($query);
+            require_once 'template/create.php';
+            exit();
+        }
+        header('Location: /login');
+        break;     
     case ($route[0] == 'admin'):
         $query = 'SELECT * FROM info';
         $result = select($query);

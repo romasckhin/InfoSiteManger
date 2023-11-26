@@ -18,6 +18,7 @@ foreach ($result as $item) {
 ?>
 
 <h1>Admin Panel</h1>
+<div><a href="/admin/create">create</a></div>
 
 <?php
 
